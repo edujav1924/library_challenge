@@ -1,0 +1,384 @@
+[
+  {
+    "id": "book-001",
+    "title": "Las Crónicas de la Eternidad",
+    "publication_year": 2001,
+    "genre": "Fantasía Épica",
+    "authors": [
+      {
+        "first_name": "Sofía",
+        "last_name": "Martínez",
+        "birth_date": "1968-03-15",
+        "nationality": "España"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Pérez",
+        "birth_date": "1972-06-20",
+        "nationality": "México"
+      }
+    ]
+  },
+  {
+    "id": "book-002",
+    "title": "El Secreto del Origen",
+    "publication_year": 1995,
+    "genre": "Misterio",
+    "authors": [
+      {
+        "first_name": "María",
+        "last_name": "González",
+        "birth_date": "1960-01-25",
+        "nationality": "Colombia"
+      }
+    ]
+  },
+  {
+    "id": "book-003",
+    "title": "Viaje al Corazón del Vacío",
+    "publication_year": 2018,
+    "genre": "Ciencia Ficción",
+    "authors": [
+      {
+        "first_name": "Pedro",
+        "last_name": "Ramírez",
+        "birth_date": "1980-09-01",
+        "nationality": "Chile"
+      },
+      {
+        "first_name": "Ana",
+        "last_name": "López",
+        "birth_date": "1975-04-12",
+        "nationality": "Argentina"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Díaz",
+        "birth_date": "1982-11-30",
+        "nationality": "Perú"
+      }
+    ]
+  },
+  {
+    "id": "book-004",
+    "title": "Las Voces del Olvido",
+    "publication_year": 2007,
+    "genre": "Thriller Psicológico",
+    "authors": [
+      {
+        "first_name": "Laura",
+        "last_name": "Castro",
+        "birth_date": "1973-07-07",
+        "nationality": "Venezuela"
+      },
+      {
+        "first_name": "Ricardo",
+        "last_name": "Silva",
+        "birth_date": "1969-02-18",
+        "nationality": "Uruguay"
+      }
+    ]
+  },
+  {
+    "id": "book-005",
+    "title": "El Canto del Alma Rota",
+    "publication_year": 2012,
+    "genre": "Drama Romántico",
+    "authors": [
+      {
+        "first_name": "Gabriela",
+        "last_name": "Herrera",
+        "birth_date": "1985-10-03",
+        "nationality": "Ecuador"
+      }
+    ]
+  },
+  {
+    "id": "book-006",
+    "title": "La Conspiración del Tiempo",
+    "publication_year": 1999,
+    "genre": "Thriller de Ciencia Ficción",
+    "authors": [
+      {
+        "first_name": "Diego",
+        "last_name": "Vega",
+        "birth_date": "1971-05-20",
+        "nationality": "Bolivia"
+      },
+      {
+        "first_name": "Valentina",
+        "last_name": "Sánchez",
+        "birth_date": "1978-12-08",
+        "nationality": "Paraguay"
+      }
+    ]
+  },
+  {
+    "id": "book-007",
+    "title": "Guardianes del Saber Antiguo",
+    "publication_year": 2003,
+    "genre": "Aventura",
+    "authors": [
+      {
+        "first_name": "Roberto",
+        "last_name": "Mendoza",
+        "birth_date": "1962-08-05",
+        "nationality": "Guatemala"
+      }
+    ]
+  },
+  {
+    "id": "book-008",
+    "title": "Flores para un Corazón Olvidado",
+    "publication_year": 2015,
+    "genre": "Romance",
+    "authors": [
+      {
+        "first_name": "Carla",
+        "last_name": "Benítez",
+        "birth_date": "1988-02-14",
+        "nationality": "Costa Rica"
+      }
+    ]
+  },
+  {
+    "id": "book-009",
+    "title": "El Enigma de la Perla Negra",
+    "publication_year": 2008,
+    "genre": "Misterio",
+    "authors": [
+      {
+        "first_name": "Manuel",
+        "last_name": "Ortiz",
+        "birth_date": "1970-04-29",
+        "nationality": "Panamá"
+      },
+      {
+        "first_name": "Sofía",
+        "last_name": "González",
+        "birth_date": "1968-03-15",
+        "nationality": "España"
+      }
+    ]
+  },
+  {
+    "id": "book-010",
+    "title": "Sueños Rotos de una Noche de Verano",
+    "publication_year": 2011,
+    "genre": "Drama",
+    "authors": [
+      {
+        "first_name": "Elena",
+        "last_name": "Rivas",
+        "birth_date": "1976-11-23",
+        "nationality": "República Dominicana"
+      },
+      {
+        "first_name": "Andrés",
+        "last_name": "Vargas",
+        "birth_date": "1974-06-05",
+        "nationality": "Honduras"
+      },
+      {
+        "first_name": "Jimena",
+        "last_name": "Paredes",
+        "birth_date": "1980-02-09",
+        "nationality": "El Salvador"
+      }
+    ]
+  },
+  {
+    "id": "book-011",
+    "title": "El Último Guardián del Cielo",
+    "publication_year": 2000,
+    "genre": "Fantasía",
+    "authors": [
+      {
+        "first_name": "Carlos",
+        "last_name": "García",
+        "birth_date": "1970-07-22",
+        "nationality": "México"
+      }
+    ]
+  },
+  {
+    "id": "book-012",
+    "title": "Senderos Cruzados del Destino",
+    "publication_year": 2019,
+    "genre": "Novela Histórica",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Pérez",
+        "birth_date": "1972-06-20",
+        "nationality": "México"
+      },
+      {
+        "first_name": "Isabella",
+        "last_name": "Rodríguez",
+        "birth_date": "1975-11-05",
+        "nationality": "Argentina"
+      }
+    ]
+  },
+  {
+    "id": "book-013",
+    "title": "La Leyenda del Lobo Gris",
+    "publication_year": 2006,
+    "genre": "Fantasía",
+    "authors": [
+      {
+        "first_name": "María",
+        "last_name": "González",
+        "birth_date": "1960-01-25",
+        "nationality": "Colombia"
+      },
+      {
+        "first_name": "Laura",
+        "last_name": "Castro",
+        "birth_date": "1973-07-07",
+        "nationality": "Venezuela"
+      }
+    ]
+  },
+  {
+    "id": "book-014",
+    "title": "Ecos de un Pasado Olvidado",
+    "publication_year": 2013,
+    "genre": "Misterio",
+    "authors": [
+      {
+        "first_name": "Pedro",
+        "last_name": "Ramírez",
+        "birth_date": "1980-09-01",
+        "nationality": "Chile"
+      }
+    ]
+  },
+  {
+    "id": "book-015",
+    "title": "El Despertar de la Inteligencia Artificial",
+    "publication_year": 2022,
+    "genre": "Ciencia Ficción",
+    "authors": [
+      {
+        "first_name": "Ana",
+        "last_name": "López",
+        "birth_date": "1975-04-12",
+        "nationality": "Argentina"
+      },
+      {
+        "first_name": "Lucas",
+        "last_name": "Díaz",
+        "birth_date": "1982-11-30",
+        "nationality": "Perú"
+      }
+    ]
+  },
+  {
+    "id": "book-016",
+    "title": "Secretos en el Bosque Oscuro",
+    "publication_year": 2009,
+    "genre": "Thriller",
+    "authors": [
+      {
+        "first_name": "Ricardo",
+        "last_name": "Silva",
+        "birth_date": "1969-02-18",
+        "nationality": "Uruguay"
+      },
+      {
+        "first_name": "Gabriela",
+        "last_name": "Herrera",
+        "birth_date": "1985-10-03",
+        "nationality": "Ecuador"
+      }
+    ]
+  },
+  {
+    "id": "book-017",
+    "title": "La Promesa de un Mañana",
+    "publication_year": 2017,
+    "genre": "Romance",
+    "authors": [
+      {
+        "first_name": "Diego",
+        "last_name": "Vega",
+        "birth_date": "1971-05-20",
+        "nationality": "Bolivia"
+      }
+    ]
+  },
+  {
+    "id": "book-018",
+    "title": "El Cronista de Mundos Paralelos",
+    "publication_year": 2004,
+    "genre": "Fantasía",
+    "authors": [
+      {
+        "first_name": "Valentina",
+        "last_name": "Sánchez",
+        "birth_date": "1978-12-08",
+        "nationality": "Paraguay"
+      },
+      {
+        "first_name": "Roberto",
+        "last_name": "Mendoza",
+        "birth_date": "1962-08-05",
+        "nationality": "Guatemala"
+      }
+    ]
+  },
+  {
+    "id": "book-019",
+    "title": "El Legado de los Antiguos",
+    "publication_year": 2021,
+    "genre": "Aventura",
+    "authors": [
+      {
+        "first_name": "Carla",
+        "last_name": "Benítez",
+        "birth_date": "1988-02-14",
+        "nationality": "Costa Rica"
+      },
+      {
+        "first_name": "Manuel",
+        "last_name": "Ortiz",
+        "birth_date": "1970-04-29",
+        "nationality": "Panamá"
+      }
+    ]
+  },
+  {
+    "id": "book-020",
+    "title": "Más Allá de las Estrellas Fugaces",
+    "publication_year": 2014,
+    "genre": "Ciencia Ficción",
+    "authors": [
+      {
+        "first_name": "Elena",
+        "last_name": "Rivas",
+        "birth_date": "1976-11-23",
+        "nationality": "República Dominicana"
+      },
+      {
+        "first_name": "Andrés",
+        "last_name": "Vargas",
+        "birth_date": "1974-06-05",
+        "nationality": "Honduras"
+      },
+      {
+        "first_name": "Jimena",
+        "last_name": "Paredes",
+        "birth_date": "1980-02-09",
+        "nationality": "El Salvador"
+      },
+      {
+        "first_name": "Sofía",
+        "last_name": "Martínez",
+        "birth_date": "1968-03-15",
+        "nationality": "España"
+      }
+    ]
+  }
+]
