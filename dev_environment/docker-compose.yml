@@ -1,13 +1,15 @@
 name: book_manager_$ENVIRONMENT
 services:
   app:
+    build:
+      dockerfile: ./dev_environment/Dockerfile
+      context: ../
     container_name: book_manager_app
     working_dir: /app
     tty: true
     stdin_open: true
     restart: always
     env_file: .env
-    build: .
     volumes:
       - ..:/app
     ports:
@@ -29,6 +31,7 @@ services:
     ports:
       - "$EXTERNAL_PORT_POSTGRES:5432"
     environment:
+      - POSTGRES_DB=$POSTGRES_DB
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
       - TZ=America/Argentina/Buenos_Aires
     networks:
