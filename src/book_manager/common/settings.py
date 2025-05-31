@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "database"
+    "database",
+    "rest_framework",
+    "api"
 ]
 
 MIDDLEWARE = [
@@ -76,10 +78,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env("POSTGRES_DB"),
-        'USER': env("DB_USER", default='postgres'),  # Usuario de la base de datos
-        'PASSWORD': env("DB_PASSWORD", default='postgres'),  # Contraseña de la base de datos
+        # Usuario de la base de datos
+        'USER': env("DB_USER", default='postgres'),
+        # Contraseña de la base de datos
+        'PASSWORD': env("DB_PASSWORD", default='postgres'),
         'HOST': env("DB_HOST", default='db'),  # O la IP/hostname del servidor
-        'PORT': env("DB_PORT", default='5432'),        # Puerto por defecto de PostgreSQL
+        # Puerto por defecto de PostgreSQL
+        'PORT': env("DB_PORT", default='5432'),
     }
 }
 
