@@ -4,7 +4,10 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-# Install pkg-config and MySQL client library
+ENV DJANGO_SUPERUSER_USERNAME ${DJANGO_SUPERUSER_USERNAME}
+ENV DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+ENV DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+
 RUN apt-get update && apt-get install -y pkg-config
 # Install system dependencies
 RUN apt-get install -y \
@@ -25,6 +28,9 @@ WORKDIR /app
 COPY ../src/book_manager /app
 COPY ../src/requirements.txt /app
 COPY ../prod/base/entrypoint.sh /tmp/entrypoint.sh
+
+RUN mkdir /app/static
+
 RUN chmod +x /tmp/entrypoint.sh
 
 
