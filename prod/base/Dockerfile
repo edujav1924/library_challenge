@@ -16,10 +16,7 @@ RUN apt-get install -y \
     python3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-# Set environment variables for MySQL client library
-#ENV MYSQLCLIENT_CFLAGS "-I/usr/include/mysql"
-#ENV MYSQLCLIENT_LDFLAGS "-L/usr/lib/x86_64-linux-gnu -lmysqlclient"
-# Set the working directory in the container
+
 WORKDIR /app
 
 # Install dependencies
@@ -33,14 +30,10 @@ RUN mkdir /app/static
 
 RUN chmod +x /tmp/entrypoint.sh
 
-
-# Define the command to run your application
-#CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.wsgi:application"]
-# Install dependencies
-RUN pip install -r  requirements.txt
+RUN pip install -r /app/requirements.txt --no-cache-dir
 
 
 ENTRYPOINT ["/tmp/entrypoint.sh"]
 
 # Define the command to run your application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "common.wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "common.wsgi","--workers", "3", "--timeout", "120", "--log-level", "info", "--access-logfile", "/logs/access.log", "--error-logfile", "/logs/error.log"]

@@ -3,10 +3,11 @@
 import datetime
 import json
 import os
-from django.db import transaction
-from django.core.management.base import BaseCommand, CommandError
-from database.models import Author, Book
 
+from database.models import Author, Book
+from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
+from django.contrib.auth.models import User
 
 class Command(BaseCommand):
     help = 'Imports initial data for the first time setup. Designed to be idempotent.'
@@ -24,6 +25,23 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             'Starting initial data import...'))
 
+        #Check superuser
+        superuser = os.getenv('DJANGO_SUPERUSER_USERNAME')
+        try:
+            if not User.objects.filter(
+            username=superuser).exists():
+                User.objects.create_superuser(
+                    username=superuser,
+                    email=os.getenv('DJANGO_SUPERUSER_EMAIL'),
+                    password=os.getenv('DJANGO_SUPERUSER_PASSWORD'))
+                self.stdout.write(self.style.SUCCESS(
+                    f'Superuser {superuser} created successfully.'))
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(
+                f'Error creating superuser: {e}'))
+        
+                
+        # Check if data already exists
         registers_count = Book.objects.count()
         if registers_count > 0:
             self.stdout.write(self.style.WARNING(

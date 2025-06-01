@@ -26,6 +26,7 @@ services:
       env_file: .env
       volumes:
         - static_volume:/app/staticfiles
+        - ../logs:/logs
       environment:
         - TZ=$TZ
       depends_on:
