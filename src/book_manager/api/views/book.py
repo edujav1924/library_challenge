@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from database.models import Book
 from api.serializers.book import BookSerializer
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 
 
 class BookPagination(PageNumberPagination):
@@ -41,12 +42,18 @@ class BookViewSet(viewsets.ModelViewSet):
                 authors__name__icontains=search)
             if search.isdigit():
                 filters = filters | Q(pub_year=search)
-            queryset = queryset.filter(filters).distinct()
+            queryset = queryset.filter(filters)
         return queryset
 
-    def partial_update(self, request, *args, **kwargs):
+    @extend_schema(
+        # extra parameters added to the schema
+        parameters=[
+            OpenApiParameter(
+                name='search', description='Search for books by title, author name, or publication year.', required=False, type=str),
+        ],
+    )
+    def list(self, request, *args, **kwargs):
         """
-        Partially update a book instance.
+        Override the list method to include authors_count in the response.
         """
-        print(request.data)
-        return super().partial_update(request, *args, **kwargs)
+        return super().list(request, *args, **kwargs)
