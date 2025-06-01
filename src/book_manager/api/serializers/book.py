@@ -11,10 +11,8 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = (
-            'id', 'title', 'description', 'pub_year', 'genre',
-            'created_at', 'updated_at', 'authors', 'author_names', 'authors_count'
+            'id', 'title', 'description', 'pub_year', 'genre', 'authors', 'author_names', 'authors_count'
         )
-        read_only_fields = ('id', 'created_at', 'updated_at')
 
     def get_author_names(self, obj):
         return [author.name for author in obj.authors.all()]

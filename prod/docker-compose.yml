@@ -11,7 +11,7 @@ services:
     environment:
       - POSTGRES_DB=$POSTGRES_DB
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
-      - TZ=America/Argentina/Buenos_Aires
+      - TZ=$TZ
     networks:
       - book_manager_network_prod
   app:
@@ -27,7 +27,7 @@ services:
       volumes:
         - static_volume:/app/staticfiles
       environment:
-        - TZ=America/Argentina/Buenos_Aires
+        - TZ=$TZ
       depends_on:
         - db
       networks:

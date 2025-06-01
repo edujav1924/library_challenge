@@ -36,12 +36,12 @@ For use Django admin the credentials are:
 ## DJANGO DRF
 
 The endpoints are:
- - ${ip}:{$APP_PORT}/api/book - GET
- - ${ip}:{$APP_PORT}/api/book/<id> - GET | PUT | DELETE
- - ${ip}:{$APP_PORT}/api/author - GET
- - ${ip}:{$APP_PORT}/api/author/<id> - GET | PUT | DELETE
+ - localhost:{$APP_EXTERNAL_PORT}/api/book - GET
+ - localhost:{$APP_EXTERNAL_PORT}/api/book/<id> - GET | PUT | DELETE
+ - localhost:{$APP_EXTERNAL_PORT}/api/author - GET
+ - localhost:{$APP_EXTERNAL_PORT}/api/author/<id> - GET | PUT | DELETE
  
- Note: $APP_PORT is declared in .env file.
+ Note: $APP_EXTERNAL_PORT=5000 is declared in .env file, if you used this port only change in `prod/.env` and run aplication again.
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
