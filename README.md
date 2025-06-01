@@ -16,9 +16,7 @@ A simple book management application.
 
 ```bash
 git clone git@github.com:edujav1924/library_challenge.git
-
 cd library_challenge
-```bash
 ./deployer  # to run services
 ```
 > **Note:** The application runs on `PORT=5000`. If you need to change the port, update the value of `APP_EXTERNAL_PORT` in `prod/.env` and restart the application.
