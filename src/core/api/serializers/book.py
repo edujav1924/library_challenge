@@ -1,12 +1,10 @@
 
 from rest_framework import serializers
-from database.models import Book, Author
+from database.models import Book
 
 
 class BookSerializer(serializers.ModelSerializer):
     author_names = serializers.SerializerMethodField(read_only=True)
-    # authors_count = serializers.IntegerField(
-    #    source='authors.count', read_only=True)
     authors_count = serializers.IntegerField(read_only=True)
     class Meta:
         model = Book
