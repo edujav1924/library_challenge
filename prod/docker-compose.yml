@@ -1,0 +1,56 @@
+name: book_manager_$ENVIRONMENT
+services:
+  
+  db:
+    container_name: book_manager_db_$ENVIRONMENT
+    image: postgres:latest
+    restart: always
+    env_file: .env
+    volumes:
+      - book_manager_db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - TZ=America/Argentina/Buenos_Aires
+    networks:
+      - book_manager_network_prod
+  app:
+      build:
+        dockerfile: ./prod/base/Dockerfile
+        context: ../
+      container_name: book_manager_app_$ENVIRONMENT
+      working_dir: /app
+      tty: true
+      stdin_open: true
+      restart: always
+      env_file: .env
+      volumes:
+        - static_volume:/app/staticfiles
+      environment:
+        - TZ=America/Argentina/Buenos_Aires
+      depends_on:
+        - db
+      networks:
+        - book_manager_network_prod
+      
+  nginx:
+    image: nginx:latest
+    container_name: book_manager_nginx_$ENVIRONMENT
+    ports:
+      - "$APP_EXTERNAL_PORT:80"
+    volumes:
+      - static_volume:/static
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+    networks:
+      - book_manager_network_prod
+
+networks:
+  book_manager_network_prod:
+    driver: bridge
+
+volumes:
+  book_manager_db_data:
+    driver: local
+  static_volume:
