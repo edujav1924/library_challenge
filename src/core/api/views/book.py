@@ -12,13 +12,14 @@ class BookPagination(PageNumberPagination):
     page_size = 5
     page_size_query_param = 'page_size'
     max_page_size = 5
+    ordering = 'title'  # Default ordering by title
 
 
 class BookViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing book instances.
     """
-    queryset = Book.objects.annotate(authors_count=Count('authors'))
+    queryset = Book.objects.annotate(num_authors=Count('authors'))
     serializer_class = BookSerializer
     permission_classes = []
     pagination_class = BookPagination
@@ -48,7 +49,7 @@ class BookViewSet(viewsets.ModelViewSet):
             author_pk = self.kwargs['author_pk']
             queryset = queryset.filter(authors__id=author_pk).distinct()
 
-        return queryset
+        return queryset.order_by(self.pagination_class.ordering)
 
     @extend_schema(
         # extra parameters added to the schema

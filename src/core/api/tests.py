@@ -61,7 +61,7 @@ class AuthorSerializerTestCase(TestCase):
         self.assertEqual(
             set(data.keys()),
             set(['id', 'name', 'nationality',
-                'birth_date', 'books_count'])
+                'birth_date', 'num_books'])
         )
 
     def test_author_content(self):

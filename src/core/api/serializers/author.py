@@ -4,13 +4,13 @@ from database.models import Author
 
 
 class AuthorSerializer(serializers.ModelSerializer):
-    books_count = serializers.SerializerMethodField(read_only=True)
+    num_books = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Author
         fields = (
-            'id', 'name', 'nationality', 'birth_date', 'books_count'
+            'id', 'name', 'nationality', 'birth_date', 'num_books'
         )
 
-    def get_books_count(self, author):
+    def get_num_books(self, author):
         return author.books.count()
