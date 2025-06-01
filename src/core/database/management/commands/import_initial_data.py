@@ -3,10 +3,11 @@
 import datetime
 import json
 import os
-from django.db import transaction
-from django.core.management.base import BaseCommand, CommandError
-from database.models import Author, Book
 
+from database.models import Author, Book
+from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
+from django.contrib.auth.models import User
 
 class Command(BaseCommand):
     help = 'Imports initial data for the first time setup. Designed to be idempotent.'
@@ -17,13 +18,36 @@ class Command(BaseCommand):
             type=str,
             default='author_and_books.json',
             help='Path to the JSON file containing author and book data. '
-                 'Defaults to authors_and_books_100_records.json in the project\'s data/ directory.'
+                 'Defaults to authors_and_books_records.json in the project\'s data/ directory.'
         )
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS(
             'Starting initial data import...'))
 
+        #Check superuser
+        superuser = os.getenv('DJANGO_SUPERUSER_USERNAME')
+        try:
+            if not User.objects.filter(
+            username=superuser).exists():
+                User.objects.create_superuser(
+                    username=superuser,
+                    email=os.getenv('DJANGO_SUPERUSER_EMAIL'),
+                    password=os.getenv('DJANGO_SUPERUSER_PASSWORD'))
+                self.stdout.write(self.style.SUCCESS(
+                    f'Superuser {superuser} created successfully.'))
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(
+                f'Error creating superuser: {e}'))
+        
+                
+        # Check if data already exists
+        registers_count = Book.objects.count()
+        if registers_count > 0:
+            self.stdout.write(self.style.WARNING(
+                'Data already exists in the database. This command is idempotent, '
+                'so it will not overwrite existing data.'))
+            return
         # Define the data you want to import
         # This could come from a CSV, JSON file, an API, etc.
         # For simplicity, we'll use a hardcoded list of dictionaries.

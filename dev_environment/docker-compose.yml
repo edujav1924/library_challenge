@@ -1,10 +1,10 @@
-name: book_manager_$ENVIRONMENT
+name: ${APP_NAME}_$ENVIRONMENT
 services:
   app:
     build:
       dockerfile: ./dev_environment/Dockerfile
       context: ../
-    container_name: book_manager_app
+    container_name: ${APP_NAME}_app
     working_dir: /app
     tty: true
     stdin_open: true
@@ -19,10 +19,10 @@ services:
     depends_on:
       - db
     networks:
-      - book_manager_network
+      - ceragon_library_network
 
   db:
-    container_name: book_manager_db
+    container_name: ${APP_NAME}_db
     image: postgres:latest
     restart: always
     env_file: .env
@@ -34,19 +34,19 @@ services:
       - POSTGRES_USER=$POSTGRES_USER
       - TZ=$TZ
     networks:
-      - book_manager_network
+      - ceragon_library_network
 
   adminer:
-    container_name: book_manager_adminer
+    container_name: ${APP_NAME}_adminer
     image: adminer
     restart: always
     ports:
       - $EXTERNAL_PORT_ADMINER:8080
     networks:
-      - book_manager_network
+      - ceragon_library_network
 
 networks:
-  book_manager_network:
+  ceragon_library_network:
     driver: bridge
 
 volumes:
