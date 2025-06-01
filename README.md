@@ -9,6 +9,8 @@ A simple book management application.
 - Search and filter books
 - Add, edit, and delete authors
 - Search and filter authors
+- Add, edit, update, and delete authors via nested book URLs, e.g., `/api/books/1/authors`
+- Add, edit, update, and delete books via nested author URLs, e.g., `/api/authors/1/books`
 
 ## Installation (PROD)
 
@@ -16,8 +18,8 @@ A simple book management application.
 git clone git@github.com:edujav1924/library_challenge.git
 
 cd library_challenge
-
-./deployer
+```bash
+./deployer  # to run services
 ```
 > **Note:** The application runs on `PORT=5000`. If you need to change the port, update the value of `APP_EXTERNAL_PORT` in `prod/.env` and restart the application.
 
