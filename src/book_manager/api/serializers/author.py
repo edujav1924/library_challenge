@@ -10,7 +10,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         model = Author
         fields = (
             'id', 'name', 'nationality', 'birth_date',
-            'created_at'
+            'created_at','books_count'
         )
 
     def get_books_count(self, author):
