@@ -58,15 +58,9 @@ class BookViewSet(viewsets.ModelViewSet):
         ],
     )
     def list(self, request, *args, **kwargs):
-        """
-        Override the list method to include authors_count in the response.
-        """
         return super().list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        """
-        Override the create method to handle nested author creation.
-        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -75,9 +69,6 @@ class BookViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
-        """
-        Override the perform_create method to save the book instance.
-        """
         serializer.save()
         # If 'author_pk' is provided, add the book to the author's books.
         if 'author_pk' in self.kwargs:

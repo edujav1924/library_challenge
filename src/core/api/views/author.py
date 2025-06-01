@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from rest_framework import viewsets, status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
@@ -13,7 +15,7 @@ class AuthorPagination(PageNumberPagination):
 
 class AuthorViewSet(viewsets.ModelViewSet):
     """
-    A viewset for viewing and editing book instances.
+    A viewset for viewing and editing author instances.
     """
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
@@ -21,15 +23,22 @@ class AuthorViewSet(viewsets.ModelViewSet):
     pagination_class = AuthorPagination
 
     def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.query_params.get('search', None)
+
+        # Filter books based on search query.
+        # The search can be a title, author name, or publication year.
+        # If the search is a digit, it will be treated as a publication year.
+        if search:
+            filters = Q(name__icontains=search)
+            queryset = queryset.filter(filters)
+
         if 'book_pk' in self.kwargs:
             book_pk = self.kwargs['book_pk']
             return super().get_queryset().filter(books__id=book_pk).distinct()
-        return super().get_queryset()
+        return queryset
 
     def create(self, request, *args, **kwargs):
-        """
-        Override the create method to handle nested book creation.
-        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -38,8 +47,6 @@ class AuthorViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
-        """override the perform_create method to save the author instance."""
-
         serializer.save()
 
         if 'book_pk' in self.kwargs:
