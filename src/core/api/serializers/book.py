@@ -6,6 +6,7 @@ from database.models import Book
 class BookSerializer(serializers.ModelSerializer):
     author_names = serializers.SerializerMethodField(read_only=True)
     num_authors = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Book
         fields = (

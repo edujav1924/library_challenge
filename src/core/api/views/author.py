@@ -26,9 +26,8 @@ class AuthorViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         search = self.request.query_params.get('search', None)
 
-        # Filter books based on search query.
-        # The search can be a title, author name, or publication year.
-        # If the search is a digit, it will be treated as a publication year.
+        # Filter authors based on search query.
+        # The search can be a name of the author.
         if search:
             filters = Q(name__icontains=search)
             queryset = queryset.filter(filters)
