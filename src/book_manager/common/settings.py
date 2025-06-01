@@ -81,7 +81,7 @@ DATABASES = {
         # Usuario de la base de datos
         'USER': env("DB_USER", default='postgres'),
         # Contraseña de la base de datos
-        'PASSWORD': env("DB_PASSWORD", default='postgres'),
+        'PASSWORD': env("POSTGRES_PASSWORD", default='postgres'),
         'HOST': env("DB_HOST", default='db'),  # O la IP/hostname del servidor
         # Puerto por defecto de PostgreSQL
         'PORT': env("DB_PORT", default='5432'),
@@ -123,7 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
+FILE_DIR = STATIC_ROOT / "files"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
