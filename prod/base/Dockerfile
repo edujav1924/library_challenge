@@ -25,7 +25,7 @@ WORKDIR /app
 # Install dependencies
 
 # Copy the app folder into the container
-COPY ../src/book_manager /app
+COPY ../src/core /app
 COPY ../src/requirements.txt /app
 COPY ../prod/base/entrypoint.sh /tmp/entrypoint.sh
 

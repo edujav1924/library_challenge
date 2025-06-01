@@ -17,13 +17,19 @@ class Command(BaseCommand):
             type=str,
             default='author_and_books.json',
             help='Path to the JSON file containing author and book data. '
-                 'Defaults to authors_and_books_100_records.json in the project\'s data/ directory.'
+                 'Defaults to authors_and_books_records.json in the project\'s data/ directory.'
         )
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS(
             'Starting initial data import...'))
 
+        registers_count = Book.objects.count()
+        if registers_count > 0:
+            self.stdout.write(self.style.WARNING(
+                'Data already exists in the database. This command is idempotent, '
+                'so it will not overwrite existing data.'))
+            return
         # Define the data you want to import
         # This could come from a CSV, JSON file, an API, etc.
         # For simplicity, we'll use a hardcoded list of dictionaries.

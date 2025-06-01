@@ -1,24 +1,24 @@
-name: book_manager_$ENVIRONMENT
+name: ${APP_NAME}_$ENVIRONMENT
 services:
   
   db:
-    container_name: book_manager_db_$ENVIRONMENT
+    container_name: ${APP_NAME}_db_$ENVIRONMENT
     image: postgres:latest
     restart: always
     env_file: .env
     volumes:
-      - book_manager_db_data:/var/lib/postgresql/data
+      - ceragon_library_data_prod:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=$POSTGRES_DB
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
       - TZ=$TZ
     networks:
-      - book_manager_network_prod
+      - ceragon_library_network_prod
   app:
       build:
         dockerfile: ./prod/base/Dockerfile
         context: ../
-      container_name: book_manager_app_$ENVIRONMENT
+      container_name: ${APP_NAME}_app_$ENVIRONMENT
       working_dir: /app
       tty: true
       stdin_open: true
@@ -31,11 +31,11 @@ services:
       depends_on:
         - db
       networks:
-        - book_manager_network_prod
+        - ceragon_library_network_prod
       
   nginx:
     image: nginx:latest
-    container_name: book_manager_nginx_$ENVIRONMENT
+    container_name: ${APP_NAME}_nginx_$ENVIRONMENT
     ports:
       - "$APP_EXTERNAL_PORT:80"
     volumes:
@@ -44,13 +44,13 @@ services:
     depends_on:
       - app
     networks:
-      - book_manager_network_prod
+      - ceragon_library_network_prod
 
 networks:
-  book_manager_network_prod:
+  ceragon_library_network_prod:
     driver: bridge
 
 volumes:
-  book_manager_db_data:
+  ceragon_library_data_prod:
     driver: local
   static_volume:
