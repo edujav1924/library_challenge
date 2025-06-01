@@ -13,7 +13,7 @@ class AuthorPagination(PageNumberPagination):
 
 class AuthorViewSet(viewsets.ModelViewSet):
     """
-    A viewset for viewing and editing book instances.
+    A viewset for viewing and editing author instances.
     """
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
@@ -27,9 +27,6 @@ class AuthorViewSet(viewsets.ModelViewSet):
         return super().get_queryset()
 
     def create(self, request, *args, **kwargs):
-        """
-        Override the create method to handle nested book creation.
-        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -38,8 +35,6 @@ class AuthorViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
-        """override the perform_create method to save the author instance."""
-
         serializer.save()
 
         if 'book_pk' in self.kwargs:

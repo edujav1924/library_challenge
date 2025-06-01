@@ -13,12 +13,13 @@ A simple book management application.
 ## Installation (PROD)
 
 ```bash
-git clone https://github.com/edujav1924/library.git
+git clone git@github.com:edujav1924/library_challenge.git
 
-cd library
+cd library_challenge
 
 ./deployer
 ```
+> **Note:** The application runs on `PORT=5000`. If you need to change the port, update the value of `APP_EXTERNAL_PORT` in `prod/.env` and restart the application.
 
 For testing purposes, .env files are visible in this repository, but in a real project they should be ignored by git.
 
@@ -27,20 +28,17 @@ To use the Django admin panel, the credentials are:
 - **User:** `admin`
 - **Password:** `admin`
 
+- **admin site** `http://localhost:5000/admin`
+- **api endpoints** `http://localhost:5000/api/*`
+
 ## DJANGO DRF
 
-The endpoints are:
+For API usage, please refer to the Swagger documentation available at:
 
-- http://localhost:5000/api/book - GET
-- http://localhost:5000/api/book/<id> - GET | PUT | PATCH | DELETE
-- http://localhost:5000/api/author - GET
-- http://localhost:5000/api/author/<id> - GET | PUT | PATCH | DELETE
-
-Note: $APP_EXTERNAL_PORT=5000 is declared in the .env file. If you need to change the port, modify it in `prod/.env` and run the application again.
-
-## DOCUMENTATION
+```
 - http://localhost:5000/api/swagger
 - http://localhost:5000/api/redoc
+```
 
 ## TESTS
 
