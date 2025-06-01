@@ -1,8 +1,7 @@
-from rest_framework import viewsets, permissions
-from api.serializers.author import AuthorSerializer
-from database.models import Author, Book
-from api.serializers.book import BookSerializer
+from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
+from database.models import Author
+from api.serializers.author import AuthorSerializer
 
 
 class AuthorPagination(PageNumberPagination):
