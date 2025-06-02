@@ -4,6 +4,20 @@ source /etc/environment
 
 cd prod
 
-docker compose stop
-docker compose build
-docker compose up -d
+#check first argument is deploy or stop
+if [ "$1" != "deploy" ] && [ "$1" != "stop" ]; then
+  echo "Usage: $0 deploy|stop"
+  exit 1
+fi
+
+#if first argument is deploy
+if [ "$1" == "deploy" ]; then
+    docker compose stop
+    docker compose build
+    docker compose up -d
+fi
+
+#if first argument is stop
+if [ "$1" == "stop" ]; then
+    docker compose stop
+fi

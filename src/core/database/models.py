@@ -23,7 +23,8 @@ class Author(BaseModel):
                             verbose_name="Name",
                             help_text="Enter the author's name",
                             null=False,
-                            blank=False)
+                            blank=False,
+                            unique=True)
     nationality = models.CharField(max_length=100,
                                    verbose_name="Nationality",
                                    help_text="Enter the author's nationality",
@@ -52,7 +53,8 @@ class Book(BaseModel):
                              verbose_name="Title",
                              help_text="Enter the title of the book",
                              null=False,
-                             blank=False)
+                             blank=False,
+                             unique=True)
     description = models.TextField(
         verbose_name="Description",
         help_text="Enter a brief description of the book",
@@ -74,7 +76,7 @@ class Book(BaseModel):
         related_name="books",
         verbose_name="Author",
         help_text="Select the author(s) of the book",
-        blank=False)
+        blank=True, null=True)
 
     def __str__(self):
         return self.title

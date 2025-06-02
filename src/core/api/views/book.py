@@ -24,8 +24,16 @@ class BookViewSet(viewsets.ModelViewSet):
     permission_classes = []
     pagination_class = BookPagination
 
+    @extend_schema(
+        description="retireves statistics about books",
+        summary="Get Book Statistics",
+        tags=["books"],
+        operation_id="get_book_stats",
+        responses={200: OpenApiParameter(type=int, name="total_books", description="Total number of books")},
+    )
     @action(detail=False, methods=['get'])
     def stats(self, request):
+        """ View to get statistics about books. """
         data = Book.objects.aggregate(
             total_books=Count('id')
         )
