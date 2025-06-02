@@ -22,7 +22,7 @@ class BookSerializerTestCase(TestCase):
         serializer = BookSerializer(instance=self.book)
         data = serializer.data
         self.assertEqual(set(data.keys()), set(['id', 'title', 'description', 'pub_year',
-                         'genre', 'author_names']))
+                         'genre', 'author_names', 'authors']))
 
     def test_book_serializer_content(self):
         serializer = BookSerializer(instance=self.book)
