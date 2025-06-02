@@ -29,8 +29,7 @@ from rest_framework_nested import routers
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from .views import BookViewSet
-from api.views.author import AuthorViewSet
+from .views import BookViewSet, AuthorViewSet
 
 router = None
 if settings.DEBUG:
